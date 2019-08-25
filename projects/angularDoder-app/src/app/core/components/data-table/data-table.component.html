@@ -1,0 +1,16 @@
+<table [ngClass]="tableClass">
+  <thead [ngClass]="headerClass">
+    <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let row of rows">
+      <ng-container *ngTemplateOutlet="tableBody; context: { $implicit: row }"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="!rows || rows.length === 0">
+      <ng-container *ngTemplateOutlet="tableBodyEmpty"></ng-container>
+    </ng-container>
+  </tbody>
+  <tfoot *ngIf="tableFoot">
+    <ng-container *ngTemplateOutlet="tableFoot"></ng-container>
+  </tfoot>
+</table>

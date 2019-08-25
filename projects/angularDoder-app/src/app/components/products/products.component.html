@@ -1,0 +1,32 @@
+
+<div>
+    <data-table [tableClass]="'table table-striped'"
+                [headerClass]="'thead-light'"
+                [tableHeader]="tableHeader" 
+                [tableBody]="tableBody"
+                [tableBodyEmpty]="tableBodyEmpty"
+                [rows]="page.results"
+                (pageChanged)="onPageChange($event)">
+        <ng-template #tableHeader>
+            <tr>
+                <th scope="col" width="40%"  direction="asc">Name</th>
+                <th scope="col" width="30%" >Code</th>
+                <th scope="col" width="30%" >Brand</th>
+
+            </tr>
+        </ng-template>
+        <ng-template #tableBodyEmpty>
+            <tr>
+                <td colspan="4" class="text-center">No data available</td>
+            </tr>
+        </ng-template>
+        <ng-template #tableBody let-row>
+            <tr>
+                <td>{{row.description}}</td>
+                <td>{{row.code}}</td>
+                <td>{{row.brand.description}}</td>
+                
+            </tr>
+        </ng-template>
+    </data-table>
+</div>
